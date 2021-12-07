@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <title>Welcome</title>
@@ -6,34 +7,51 @@
 </head>
 <body>
 	<div class="container">
-		<table class="table table-striped">
-			<caption>Your todos are</caption>
-			<thead>
-				<tr>
-					<th>Description</th>
-					<th>Target Date</th>
-					<th>Is it Done?</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Todo 1</td>
-					<td>10/12/2017</td>
-					<td>No</td>
-					<td><a class="btn btn-warning" href="/edit-todo">Edit Todo</a></td>
-					<td><a class="btn btn-warning" href="/delete-todo">Delete
-							Todo</a></td>
-				</tr>
-			</tbody>
-		</table>
-		<div>
-			<a class="btn btn-default" href="/add-todo">Add a Todo</a>
 
-		</div>
+		<h1 class="text-primary">Contact App</h1>
+		<!-- check that data is present or not and display -->
+		<c:choose>
+			<c:when test="${contactList.size() == 0}">
+				<div class="card">
+					<div class="card-body">
+						<h2 class="card-title text-danger">No records found</h2>
+						<p class="card-text text-info">Add some records by hitting Add
+							Contact.</p>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<table class="table table-striped">
+					<caption>Your Contacts are</caption>
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email ID</th>
+							<th>Phone No</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="oneContact" items="${contactList}">
+							<tr>
+								<td>${oneContact.id}</td>
+								<td>${oneContact.firstName}</td>
+								<td>${oneContact.lastName}</td>
+								<td>${oneContact.emailId}</td>
+								<td>${oneContact.phoneNo}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:otherwise>
+		</c:choose>
+
+
+
 		<script src="../webjars/jquery/1.9.1/jquery.min.js"></script>
 		<script src="../webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 	</div>
 </body>
 </html>
