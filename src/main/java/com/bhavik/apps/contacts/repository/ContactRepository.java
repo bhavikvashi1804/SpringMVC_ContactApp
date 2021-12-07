@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.bhavik.apps.contacts.model.Contact;
 
 @Repository
-public interface ContactRepository extends JpaRepository<Contact, Integer> {
+public interface ContactRepository extends JpaRepository<Contact, Long> {
 
 }
