@@ -2,6 +2,8 @@
  * 
  */
 
-onload = () => {
+
+
+/*onload = () => {
 	alert("Hello");
-};
+};*/
