@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bhavik.apps.contacts.dao.ContactDAO;
 import com.bhavik.apps.contacts.model.Contact;
+import com.bhavik.apps.contacts.service.ContactService;
 
 @Controller
 @RequestMapping(value = "contacts")
 public class HomeController {
 
 	@Autowired
-	private ContactDAO contactDAO;
+	private ContactService contactService;
 
 	@GetMapping("home")
 	public String displayHomePage(ModelMap model) {
-		List<Contact> contacts = contactDAO.getAllContacts();
+		List<Contact> contacts = contactService.getAllContacts();
 		// System.out.println(contacts);
 		model.put("contactList", contacts);
 		return "home";
@@ -31,9 +32,9 @@ public class HomeController {
 	@ResponseBody
 	public String addSomeDummyRecords() {
 		Contact c1 = new Contact("Bhavik", "Vashi", 7359791234l, "bhavikvashi@gmail.com");
-		contactDAO.saveContact(c1);
+		contactService.saveContact(c1);
 		Contact c2 = new Contact("Raj", "Patel", 1232412312l, "rajpatel@gmail.com");
-		contactDAO.saveContact(c2);
+		contactService.saveContact(c2);
 		return "Dummy records addedd Successfully";
 	}
 
