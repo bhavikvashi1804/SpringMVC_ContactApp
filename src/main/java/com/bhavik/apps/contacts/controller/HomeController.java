@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,8 +41,18 @@ public class HomeController {
 	}
 
 	@GetMapping("showAddContactForm")
-	public String showAddContactForm() {
+	public String showAddContactForm(ModelMap modelMap) {
+		Contact contact = new Contact();
+		modelMap.put("contact", contact);
 		return "contact-form";
+	}
+
+	@PostMapping("submitNewContactForm")
+	public String saveContact(@ModelAttribute("contact") Contact contact) {
+		// save the contact
+		System.out.println(contact);
+		// redirect to the contact
+		return "redirect:home";
 	}
 
 }
