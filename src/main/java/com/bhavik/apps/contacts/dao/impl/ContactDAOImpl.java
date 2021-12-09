@@ -18,7 +18,7 @@ public class ContactDAOImpl implements ContactDAO {
 	private ContactRepository contactRepository;
 
 	public List<Contact> getAllContacts() {
-		List<Contact> contacts = contactRepository.findAll();
+		List<Contact> contacts = contactRepository.findAllByOrderByPhoneNoAsc();
 		return contacts;
 	}
 
