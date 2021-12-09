@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Welcome</title>
+<title>Contact App</title>
 <link href="../webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet" type="text/css">
@@ -10,6 +10,11 @@
 	<div class="container">
 
 		<h1 class="text-primary">Contact App</h1>
+
+		<hr>
+		<input type="button" class="btn btn-primary" value="Add Contact"
+			onclick="window.location.href='showAddContactForm'; return false;" />
+		<hr>
 		<!-- check that data is present or not and display -->
 		<c:choose>
 			<c:when test="${contactList.size() == 0}">

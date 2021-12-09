@@ -38,4 +38,9 @@ public class HomeController {
 		return "Dummy records addedd Successfully";
 	}
 
+	@GetMapping("showAddContactForm")
+	public String showAddContactForm() {
+		return "contact-form";
+	}
+
 }
