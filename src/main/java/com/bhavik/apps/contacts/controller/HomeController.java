@@ -47,12 +47,13 @@ public class HomeController {
 		return "contact-form";
 	}
 
-	@PostMapping("submitNewContactForm")
+	@PostMapping("save-customer")
 	public String saveContact(@ModelAttribute("contact") Contact contact) {
 		// save the contact
-		System.out.println(contact);
+		// System.out.println(contact);
+		contactService.saveContact(contact);
 		// redirect to the contact
-		return "redirect:home";
+		return "redirect:/contacts/home";
 	}
 
 }

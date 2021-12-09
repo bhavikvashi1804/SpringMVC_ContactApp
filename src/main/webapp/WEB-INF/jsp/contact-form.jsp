@@ -16,7 +16,7 @@
 		<h4>Add New Contact</h4>
 		<hr>
 
-		<form:form action="submitNewContactForm" modelAttribute="contact"
+		<form:form action="save-customer" modelAttribute="contact"
 			method="POST">
 			<!-- First Name -->
 			<div class="form-group">
@@ -49,6 +49,8 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form:form>
 
+
+		<a href="./home" class="text-center">Back to List</a>
 
 		<script src="../webjars/jquery/1.9.1/jquery.min.js"></script>
 		<script src="../webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
