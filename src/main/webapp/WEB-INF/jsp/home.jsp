@@ -46,6 +46,10 @@
 							<c:url var="updateLink" value="/contacts/showUpdateContactForm">
 								<c:param name="contactId" value="${oneContact.id}"></c:param>
 							</c:url>
+							<c:url var="deleteLink" value="/contacts/delete-contact">
+								<c:param name="contactId" value="${oneContact.id}"></c:param>
+							</c:url>
+
 
 							<tr>
 								<td>${oneContact.id}</td>
@@ -53,8 +57,8 @@
 								<td>${oneContact.lastName}</td>
 								<td>${oneContact.emailId}</td>
 								<td>${oneContact.phoneNo}</td>
-								<td><a href="${updateLink}">Update</a> / <a href="">Delete</a>
-								</td>
+								<td><a href="${updateLink}">Update</a> / <a
+									href="${deleteLink}">Delete</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

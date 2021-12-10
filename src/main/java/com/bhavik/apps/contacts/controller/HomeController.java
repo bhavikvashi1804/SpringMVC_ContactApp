@@ -68,4 +68,10 @@ public class HomeController {
 		return "redirect:/contacts/home";
 	}
 
+	@GetMapping("delete-contact")
+	public String deleteContact(@RequestParam("contactId") Long id) {
+		contactService.deleteContact(id);
+		return "redirect:/contacts/home";
+	}
+
 }
