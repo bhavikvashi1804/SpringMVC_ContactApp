@@ -16,4 +16,6 @@ public interface ContactService {
 
 	public void deleteContact(Long id);
 
+	public List<Contact> searchContactByFirstName(String firstName);
+
 }

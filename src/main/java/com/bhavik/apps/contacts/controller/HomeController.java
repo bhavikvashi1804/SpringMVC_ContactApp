@@ -75,8 +75,10 @@ public class HomeController {
 	}
 
 	@GetMapping("search")
-	public String searchTheContacts(@RequestParam("theSearchName") String firstName) {
-		System.out.println(firstName);
+	public String searchTheContacts(@RequestParam("theSearchName") String firstName, ModelMap modelMap) {
+		// System.out.println(firstName);
+		List<Contact> contacts = contactService.searchContactByFirstName(firstName.trim());
+		modelMap.put("contactList", contacts);
 		return "/home";
 	}
 

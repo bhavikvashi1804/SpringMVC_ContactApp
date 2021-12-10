@@ -45,4 +45,9 @@ public class ContactServiceImpl implements ContactService {
 		contactDAO.deleteContact(id);
 	}
 
+	@Override
+	public List<Contact> searchContactByFirstName(String firstName) {
+		List<Contact> contacts = contactDAO.searchContactByFirstName(firstName);
+		return contacts;
+	}
 }

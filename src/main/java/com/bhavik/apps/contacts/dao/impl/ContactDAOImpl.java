@@ -39,4 +39,9 @@ public class ContactDAOImpl implements ContactDAO {
 		contactRepository.deleteById(id);
 	}
 
+	public List<Contact> searchContactByFirstName(String firstName) {
+		List<Contact> filteredContactList = contactRepository.findByFirstNameContains(firstName);
+		return filteredContactList;
+	}
+
 }

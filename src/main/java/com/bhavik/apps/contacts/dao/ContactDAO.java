@@ -15,5 +15,7 @@ public interface ContactDAO {
 	public void saveContact(Contact contact);
 
 	public void deleteContact(Long id);
+	
+	public List<Contact> searchContactByFirstName(String firstName);
 
 }

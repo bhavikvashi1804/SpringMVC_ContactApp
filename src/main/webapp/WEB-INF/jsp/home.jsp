@@ -15,7 +15,9 @@
 		<hr>
 		<input type="button" class="btn btn-primary" value="Add Contact"
 			onclick="window.location.href='showAddContactForm'; return false;" />
-		<div class="btn btn-success">Show All Contacts</div>
+		<div class="btn btn-success"
+			onclick="window.location.href='home'; return false;">Show All
+			Contacts</div>
 		<hr>
 		<!-- check that data is present or not and display -->
 		<c:choose>
