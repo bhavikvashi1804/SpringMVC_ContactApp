@@ -43,20 +43,36 @@
 				</div>
 
 
+
+
+
+
 				<!-- Create a sorting URLS -->
 				<!-- construct a sort link for first name -->
 				<c:url var="sortLinkId" value="/contacts/home">
+					<c:if test="${searchKeyWord != null }">
+						<c:param name="searchKeyword" value="${searchKeyWord}"></c:param>
+					</c:if>
 					<c:param name="sort" value="0" />
 				</c:url>
 				<c:url var="sortLinkFirstName" value="/contacts/home">
+					<c:if test="${searchKeyWord != null }">
+						<c:param name="searchKeyword" value="${searchKeyWord}"></c:param>
+					</c:if>
 					<c:param name="sort"
 						value="<%=Integer.toString(SortUtils.FIRST_NAME)%>" />
 				</c:url>
 				<c:url var="sortLinkLastName" value="/contacts/home">
+					<c:if test="${searchKeyWord != null }">
+						<c:param name="searchKeyword" value="${searchKeyWord}"></c:param>
+					</c:if>
 					<c:param name="sort"
 						value="<%=Integer.toString(SortUtils.LAST_NAME)%>" />
 				</c:url>
 				<c:url var="sortLinkEmailId" value="/contacts/home">
+					<c:if test="${searchKeyWord != null }">
+						<c:param name="searchKeyword" value="${searchKeyWord}"></c:param>
+					</c:if>
 					<c:param name="sort"
 						value="<%=Integer.toString(SortUtils.EMAIL_ID)%>" />
 				</c:url>

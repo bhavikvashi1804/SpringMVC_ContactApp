@@ -82,6 +82,7 @@ public class HomeController {
 		// System.out.println(firstName);
 		List<Contact> contacts = contactService.searchContactByFirstName(firstName.trim());
 		modelMap.put("contactList", contacts);
+		modelMap.put("searchKeyWord", firstName);
 		return "/home";
 	}
 
