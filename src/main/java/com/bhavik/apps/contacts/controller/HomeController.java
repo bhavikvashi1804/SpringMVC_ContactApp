@@ -26,7 +26,8 @@ public class HomeController {
 	public String displayHomePage(ModelMap model,
 			@RequestParam(name = "sort", required = false, defaultValue = "0") int sortId,
 			@RequestParam(required = false) String searchKeyword) {
-		List<Contact> contacts = contactService.getAllContacts(sortId);
+
+		List<Contact> contacts = contactService.getAllContacts(sortId, searchKeyword);
 		// System.out.println(contacts);
 
 		if (searchKeyword == "" || searchKeyword == null) {

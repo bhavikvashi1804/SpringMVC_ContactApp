@@ -19,8 +19,8 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	@Transactional
-	public List<Contact> getAllContacts(int sortId) {
-		List<Contact> contacts = contactDAO.getAllContacts(sortId);
+	public List<Contact> getAllContacts(int sortId, String firstName) {
+		List<Contact> contacts = contactDAO.getAllContacts(sortId, firstName);
 		return contacts;
 	}
 

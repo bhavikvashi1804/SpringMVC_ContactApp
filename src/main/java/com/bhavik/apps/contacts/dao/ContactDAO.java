@@ -6,7 +6,7 @@ import com.bhavik.apps.contacts.model.Contact;
 
 public interface ContactDAO {
 
-	public List<Contact> getAllContacts(int sortId);
+	public List<Contact> getAllContacts(int sortId,String firstName);
 
 	public Contact getOneContact(Long id);
 

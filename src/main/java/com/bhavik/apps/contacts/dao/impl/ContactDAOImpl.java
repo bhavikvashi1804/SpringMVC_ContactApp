@@ -19,20 +19,38 @@ public class ContactDAOImpl implements ContactDAO {
 	@Autowired
 	private ContactRepository contactRepository;
 
-	public List<Contact> getAllContacts(int sortId) {
+	public List<Contact> getAllContacts(int sortId, String firstName) {
 		List<Contact> contacts = new ArrayList<Contact>();
-		switch (sortId) {
-		case SortUtils.FIRST_NAME:
-			contacts = contactRepository.findAllByOrderByFirstNameAsc();
-			break;
-		case SortUtils.LAST_NAME:
-			contacts = contactRepository.findAllByOrderByLastNameAsc();
-			break;
-		case SortUtils.EMAIL_ID:
-			contacts = contactRepository.findAllByOrderByEmailIdAsc();
-			break;
-		default:
-			contacts = contactRepository.findAll();
+
+		if (firstName == null) {
+			switch (sortId) {
+			case SortUtils.FIRST_NAME:
+				contacts = contactRepository.findAllByOrderByFirstNameAsc();
+				break;
+			case SortUtils.LAST_NAME:
+				contacts = contactRepository.findAllByOrderByLastNameAsc();
+				break;
+			case SortUtils.EMAIL_ID:
+				contacts = contactRepository.findAllByOrderByEmailIdAsc();
+				break;
+			default:
+				contacts = contactRepository.findAll();
+			}
+		} else {
+			switch (sortId) {
+			case SortUtils.FIRST_NAME:
+				contacts = contactRepository.findByFirstNameContainsOrderByFirstNameAsc(firstName);
+				break;
+			case SortUtils.LAST_NAME:
+				contacts = contactRepository.findByFirstNameContainsOrderByLastNameAsc(firstName);
+				break;
+			case SortUtils.EMAIL_ID:
+				contacts = contactRepository.findByFirstNameContainsOrderByEmailIdAsc(firstName);
+				break;
+			default:
+				contacts = contactRepository.findByFirstNameContains(firstName);
+			}
+
 		}
 
 		return contacts;
