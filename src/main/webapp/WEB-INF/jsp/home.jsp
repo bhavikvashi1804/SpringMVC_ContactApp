@@ -58,7 +58,8 @@
 								<td>${oneContact.emailId}</td>
 								<td>${oneContact.phoneNo}</td>
 								<td><a href="${updateLink}">Update</a> / <a
-									href="${deleteLink}">Delete</a></td>
+									href="${deleteLink}"
+									onclick="if (!(confirm('Are you sure you want to delete this contact?'))) return false">Delete</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
