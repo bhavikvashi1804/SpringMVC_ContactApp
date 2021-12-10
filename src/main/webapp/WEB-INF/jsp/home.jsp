@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
 <title>Contact App</title>
@@ -14,6 +15,7 @@
 		<hr>
 		<input type="button" class="btn btn-primary" value="Add Contact"
 			onclick="window.location.href='showAddContactForm'; return false;" />
+		<div class="btn btn-success">Show All Contacts</div>
 		<hr>
 		<!-- check that data is present or not and display -->
 		<c:choose>
@@ -27,6 +29,17 @@
 				</div>
 			</c:when>
 			<c:otherwise>
+				<!-- Searching Functionality -->
+
+				<div class="col">
+					<form:form action="search" method="GET">
+					Search Contact: <input type="text" name="theSearchName">
+						<input type="submit" value="Search" class="btn btn-secondary">
+					</form:form>
+				</div>
+
+
+				<!--  List of Contacts -->
 				<table class="table table-striped">
 					<caption>Your Contacts are</caption>
 					<thead>

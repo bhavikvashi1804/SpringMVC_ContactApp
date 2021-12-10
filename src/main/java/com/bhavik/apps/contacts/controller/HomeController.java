@@ -74,4 +74,10 @@ public class HomeController {
 		return "redirect:/contacts/home";
 	}
 
+	@GetMapping("search")
+	public String searchTheContacts(@RequestParam("theSearchName") String firstName) {
+		System.out.println(firstName);
+		return "/home";
+	}
+
 }
