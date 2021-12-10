@@ -3,21 +3,17 @@ package com.bhavik.apps.contacts.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bhavik.apps.contacts.dao.ContactDAO;
 import com.bhavik.apps.contacts.model.Contact;
 import com.bhavik.apps.contacts.service.ContactService;
-import com.bhavik.apps.contacts.util.SortUtils;
 
 @Controller
 @RequestMapping(value = "contacts")
@@ -28,9 +24,18 @@ public class HomeController {
 
 	@GetMapping("home")
 	public String displayHomePage(ModelMap model,
-			@RequestParam(name = "sort", required = false, defaultValue = "0") int sortId) {
+			@RequestParam(name = "sort", required = false, defaultValue = "0") int sortId,
+			@RequestParam(required = false) String searchKeyword) {
 		List<Contact> contacts = contactService.getAllContacts(sortId);
 		// System.out.println(contacts);
+
+		if (searchKeyword == "" || searchKeyword == null) {
+			model.remove("searchKeyWord");
+			System.out.println("Remove the search keyword");
+		} else {
+			model.put("searchKeyWord", searchKeyword);
+			System.out.println("Yes, propogate the search key word");
+		}
 
 		model.put("contactList", contacts);
 		return "home";
