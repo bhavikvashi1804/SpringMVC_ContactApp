@@ -6,7 +6,7 @@ import com.bhavik.apps.contacts.model.Contact;
 
 public interface ContactDAO {
 
-	public List<Contact> getAllContacts();
+	public List<Contact> getAllContacts(int sortId);
 
 	public Contact getOneContact(Long id);
 
@@ -15,7 +15,7 @@ public interface ContactDAO {
 	public void saveContact(Contact contact);
 
 	public void deleteContact(Long id);
-	
+
 	public List<Contact> searchContactByFirstName(String firstName);
 
 }

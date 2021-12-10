@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bhavik.apps.contacts.dao.ContactDAO;
 import com.bhavik.apps.contacts.model.Contact;
 import com.bhavik.apps.contacts.service.ContactService;
+import com.bhavik.apps.contacts.util.SortUtils;
 
 @Controller
 @RequestMapping(value = "contacts")
@@ -26,9 +27,11 @@ public class HomeController {
 	private ContactService contactService;
 
 	@GetMapping("home")
-	public String displayHomePage(ModelMap model) {
-		List<Contact> contacts = contactService.getAllContacts();
+	public String displayHomePage(ModelMap model,
+			@RequestParam(name = "sort", required = false, defaultValue = "0") int sortId) {
+		List<Contact> contacts = contactService.getAllContacts(sortId);
 		// System.out.println(contacts);
+
 		model.put("contactList", contacts);
 		return "home";
 	}

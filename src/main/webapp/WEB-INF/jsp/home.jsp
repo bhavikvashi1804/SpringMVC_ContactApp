@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!--  Import sort Utills -->
+<%@ page import="com.bhavik.apps.contacts.util.SortUtils"%>
 <html>
 <head>
 <title>Contact App</title>
@@ -41,15 +43,34 @@
 				</div>
 
 
+				<!-- Create a sorting URLS -->
+				<!-- construct a sort link for first name -->
+				<c:url var="sortLinkId" value="/contacts/home">
+					<c:param name="sort" value="0" />
+				</c:url>
+				<c:url var="sortLinkFirstName" value="/contacts/home">
+					<c:param name="sort"
+						value="<%=Integer.toString(SortUtils.FIRST_NAME)%>" />
+				</c:url>
+				<c:url var="sortLinkLastName" value="/contacts/home">
+					<c:param name="sort"
+						value="<%=Integer.toString(SortUtils.LAST_NAME)%>" />
+				</c:url>
+				<c:url var="sortLinkEmailId" value="/contacts/home">
+					<c:param name="sort"
+						value="<%=Integer.toString(SortUtils.EMAIL_ID)%>" />
+				</c:url>
+
+
 				<!--  List of Contacts -->
 				<table class="table table-striped">
 					<caption>Your Contacts are</caption>
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Email ID</th>
+							<th><a href="${sortLinkId}">#</a></th>
+							<th><a href="${sortLinkFirstName}">First Name</a></th>
+							<th><a href="${sortLinkLastName}">Last Name</a></th>
+							<th><a href="${sortLinkEmailId}">Email ID</a></th>
 							<th>Phone No</th>
 							<th>Action</th>
 						</tr>

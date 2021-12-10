@@ -1,5 +1,6 @@
 package com.bhavik.apps.contacts.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.bhavik.apps.contacts.dao.ContactDAO;
 import com.bhavik.apps.contacts.model.Contact;
 import com.bhavik.apps.contacts.repository.ContactRepository;
+import com.bhavik.apps.contacts.util.SortUtils;
 
 @Repository
 public class ContactDAOImpl implements ContactDAO {
@@ -17,8 +19,22 @@ public class ContactDAOImpl implements ContactDAO {
 	@Autowired
 	private ContactRepository contactRepository;
 
-	public List<Contact> getAllContacts() {
-		List<Contact> contacts = contactRepository.findAll();
+	public List<Contact> getAllContacts(int sortId) {
+		List<Contact> contacts = new ArrayList<Contact>();
+		switch (sortId) {
+		case SortUtils.FIRST_NAME:
+			contacts = contactRepository.findAllByOrderByFirstNameAsc();
+			break;
+		case SortUtils.LAST_NAME:
+			contacts = contactRepository.findAllByOrderByLastNameAsc();
+			break;
+		case SortUtils.EMAIL_ID:
+			contacts = contactRepository.findAllByOrderByEmailIdAsc();
+			break;
+		default:
+			contacts = contactRepository.findAll();
+		}
+
 		return contacts;
 	}
 

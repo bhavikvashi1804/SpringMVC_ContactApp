@@ -12,6 +12,12 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
 
 	public List<Contact> findAllByOrderByPhoneNoAsc();
 
+	public List<Contact> findAllByOrderByFirstNameAsc();
+
+	public List<Contact> findAllByOrderByLastNameAsc();
+
+	public List<Contact> findAllByOrderByEmailIdAsc();
+
 	public List<Contact> findByFirstNameContains(String firstname);
 
 }

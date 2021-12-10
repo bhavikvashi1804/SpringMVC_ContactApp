@@ -6,7 +6,7 @@ import com.bhavik.apps.contacts.model.Contact;
 
 public interface ContactService {
 
-	public List<Contact> getAllContacts();
+	public List<Contact> getAllContacts(int id);
 
 	public Contact getOneContact(Long id);
 
