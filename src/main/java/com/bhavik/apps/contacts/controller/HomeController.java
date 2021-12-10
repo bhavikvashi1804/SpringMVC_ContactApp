@@ -3,12 +3,15 @@ package com.bhavik.apps.contacts.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bhavik.apps.contacts.dao.ContactDAO;
@@ -43,6 +46,13 @@ public class HomeController {
 	@GetMapping("showAddContactForm")
 	public String showAddContactForm(ModelMap modelMap) {
 		Contact contact = new Contact();
+		modelMap.put("contact", contact);
+		return "contact-form";
+	}
+
+	@GetMapping("showUpdateContactForm")
+	public String showUpdateContactForm(@RequestParam("contactId") Long id, ModelMap modelMap) {
+		Contact contact = contactService.getOneContact(id);
 		modelMap.put("contact", contact);
 		return "contact-form";
 	}

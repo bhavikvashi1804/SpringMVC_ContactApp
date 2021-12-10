@@ -18,6 +18,12 @@
 
 		<form:form action="save-customer" modelAttribute="contact"
 			method="POST">
+
+			<!--  Hidden Tag for Id-->
+			<!--  We must have to bind the ID as hidden input field  -->
+			<form:input type="hidden" class="form-control" id="id" path="id" />
+
+
 			<!-- First Name -->
 			<div class="form-group">
 				<label for="First Name">First Name</label>

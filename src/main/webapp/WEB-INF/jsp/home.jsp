@@ -36,16 +36,25 @@
 							<th>Last Name</th>
 							<th>Email ID</th>
 							<th>Phone No</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="oneContact" items="${contactList}">
+
+							<!-- Create a Link Var -->
+							<c:url var="updateLink" value="/contacts/showUpdateContactForm">
+								<c:param name="contactId" value="${oneContact.id}"></c:param>
+							</c:url>
+
 							<tr>
 								<td>${oneContact.id}</td>
 								<td>${oneContact.firstName}</td>
 								<td>${oneContact.lastName}</td>
 								<td>${oneContact.emailId}</td>
 								<td>${oneContact.phoneNo}</td>
+								<td><a href="${updateLink}">Update</a> / <a href="">Delete</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
