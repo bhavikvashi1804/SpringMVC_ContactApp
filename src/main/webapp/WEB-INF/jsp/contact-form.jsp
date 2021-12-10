@@ -13,7 +13,15 @@
 		<h1 class="text-primary">Contact App</h1>
 
 		<hr>
-		<h4>Add New Contact</h4>
+		<c:choose>
+			<c:when test="${newContact}">
+				<h4>Add New Contact</h4>
+			</c:when>
+			<c:otherwise>
+				<h4>Update Contact</h4>
+			</c:otherwise>
+		</c:choose>
+
 		<hr>
 
 		<form:form action="save-customer" modelAttribute="contact"
@@ -52,7 +60,16 @@
 					path="phoneNo" placeholder="Enter the Phone Number" />
 			</div>
 
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">
+				<c:choose>
+					<c:when test="${newContact}">
+				Save
+			</c:when>
+					<c:otherwise>
+				Update
+			</c:otherwise>
+				</c:choose>
+			</button>
 		</form:form>
 
 

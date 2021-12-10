@@ -47,6 +47,7 @@ public class HomeController {
 	public String showAddContactForm(ModelMap modelMap) {
 		Contact contact = new Contact();
 		modelMap.put("contact", contact);
+		modelMap.put("newContact", true);
 		return "contact-form";
 	}
 
@@ -54,6 +55,7 @@ public class HomeController {
 	public String showUpdateContactForm(@RequestParam("contactId") Long id, ModelMap modelMap) {
 		Contact contact = contactService.getOneContact(id);
 		modelMap.put("contact", contact);
+		modelMap.put("newContact", false);
 		return "contact-form";
 	}
 
