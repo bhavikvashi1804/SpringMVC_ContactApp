@@ -59,7 +59,7 @@ public class HomeController {
 		return "contact-form";
 	}
 
-	@PostMapping("save-customer")
+	@PostMapping("save-contact")
 	public String saveContact(@ModelAttribute("contact") Contact contact) {
 		// save the contact
 		// System.out.println(contact);

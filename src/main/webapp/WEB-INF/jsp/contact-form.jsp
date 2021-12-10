@@ -24,7 +24,7 @@
 
 		<hr>
 
-		<form:form action="save-customer" modelAttribute="contact"
+		<form:form action="save-contact" modelAttribute="contact"
 			method="POST">
 
 			<!--  Hidden Tag for Id-->
